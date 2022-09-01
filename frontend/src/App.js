@@ -4,6 +4,7 @@ import AboutPage from "./pages/AboutPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import { Container, Navbar } from "react-bootstrap";
 import PostsList from "./Posts/PostsList";
+import CreatePost from "./Posts/CreatePost";
 import './App.css';
 
 const App = () => {
@@ -57,6 +58,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/posts" element={<PostsList />} />
+          <Route path="/posts/new" element={<CreatePost />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
