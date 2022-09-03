@@ -3,3 +3,10 @@
 .fixed-margin{
   margin-top: 15px;
 }
+
+p.errors {
+  color: #bf1650;
+  display: inline;
+  margin-top: 50px;
+}
+

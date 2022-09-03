@@ -4,7 +4,7 @@ class Api::V1::PostsController < ApplicationController
   # GET /posts
   def index
     @posts = Post.all
-
+    
     render json: @posts
   end
 
@@ -16,7 +16,7 @@ class Api::V1::PostsController < ApplicationController
   # POST /posts
   def create
     @post = Post.new(post_params)
-
+    
     if @post.save
       render json: @post, status: :created, location: api_v1_post_path(@post)
     else
@@ -35,7 +35,14 @@ class Api::V1::PostsController < ApplicationController
 
   # DELETE /posts/1
   def destroy
-    @post.destroy
+    if @post.destroy
+      @posts = Post.all
+    
+      render json: @posts
+      
+    else
+      render json: @post.errors
+    end  
   end
 
   private
