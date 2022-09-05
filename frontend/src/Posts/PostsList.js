@@ -7,13 +7,8 @@ import Post from "./Post";
 const PostsList = () => {
   const [APIData, setAPIData] = useState([]);
 
-  const handleChange = (newValue) =>{
-    setAPIData(newValue);
-
-  }
   useEffect(() => {
     axios.get("http://localhost:3002/api/v1/posts").then((response) => {
-
       setAPIData(response.data);
     });
   }, []);
@@ -31,19 +26,24 @@ const PostsList = () => {
             <th>#</th>
             <th>Title</th>
             <th>Content</th>
-            <th>Action</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
           {APIData.length > 0 ? (
             <>
               {APIData.map((post) => {
-                return <Post post={post} setAPIData={setAPIData}   />;
+                return (
+                  <Post post={post} key={post.id} setAPIData={setAPIData} />
+                );
               })}
             </>
           ) : (
-            <div className="empty">
-              <h1>no record</h1>
+            <div className="load-center">
+              <div className="spinner-border" role="status">
+                <span className="sr-only">Loading data...</span>
+              </div>
             </div>
           )}
         </tbody>
