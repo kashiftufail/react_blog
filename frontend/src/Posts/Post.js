@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 
 const Post = (props) => {
   const { id, title, content } = props.post;
+  
   let url = `/posts/${id}/edit`;
+
+  let showUrl = `/posts/${id}`;
 
   const onDelete = (id) => {
     axios
@@ -21,10 +24,17 @@ const Post = (props) => {
     localStorage.setItem("Content", content);
   };
 
+  const setPost = (data) => {
+    // let { id, title, content } = data;
+    // localStorage.setItem("ID", id);
+    // localStorage.setItem("Title", title);
+    // localStorage.setItem("Content", content);
+  };
+
   return (
     <tr key={id}>
       <td>{id}</td>
-      <td>{title}</td>
+      <td><Link to={showUrl} onClick={() => setPost(props.post)} >{title}</Link></td>
       <td>{content}</td>
       <td>
         <Link to={url}>

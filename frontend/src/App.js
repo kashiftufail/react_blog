@@ -5,6 +5,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import PostsList from "./Posts/PostsList";
 import CreatePost from "./Posts/CreatePost";
 import UpdatePost from "./Posts/UpdatePost";
+import ShowPost from "./Posts/ShowPost";
 import "./App.css";
 
 const App = () => {
@@ -61,6 +62,7 @@ const App = () => {
           <Route path="/posts" element={<PostsList />} />
           <Route path="/posts/new" element={<CreatePost />} />
           <Route path="/posts/:id/edit" element={<UpdatePost />} />
+          <Route path="/posts/:id" element={<ShowPost />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
